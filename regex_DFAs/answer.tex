@@ -186,19 +186,20 @@
 \begin{question}{Question 2}
     \begin{part}
         \begin{answer}
-            $\mathrm{(a|b)^*a(a|b)^*a(a|b)^*a(a|b)^*}$
+            $\boxed{\mathrm{(a|b)^*a(a|b)^*a(a|b)^*a(a|b)^*}}$
         \end{answer}
     \end{part}
 
     \begin{part}
         \begin{answer}
-            $\mathrm{(a | bb)^*}$
+            $\boxed{\mathrm{(a | bb)^*}}$
         \end{answer}
     \end{part}
 
     \begin{part}
         \begin{answer}
-            $\mathrm{[a-z]^*a[a-z]^*e[a-z]^*i[a-z]^*o[a-z]^*u[a-z]^*}$
+            $\boxed{\mathrm{[\text{\textasciicircum}aeiou]^* \; a \; [\text{\textasciicircum}aeiou]^* \; e \; [\text{\textasciicircum}aeiou] ^* \; i \; [\text{\textasciicircum}aeiou]^* \; o\; [\text{\textasciicircum}aeiou]^* \; u\; [\text{\textasciicircum}aeiou]^*}}$\\\
+            note: [\textasciicircum aeiou] represents any lower-case letter that is not a vowel.
         \end{answer}
     \end{part}
 \end{question}
@@ -247,14 +248,17 @@
 \begin{question}{Question 5}
     \begin{part}
         \begin{answer}
-            \centering
+
             \begin{align*}
                 & \mathrm{StartSequence} &&\coloneqq \mathrm{(<!--)} \\
                 & \mathrm{EndSequence} &&\coloneqq \mathrm{(-->)} \\
-                & \mathrm{LegalChar} &&\coloneqq \mathrm{([a-z0-9 \backslash s \backslash r \backslash n \underbar{$-$} ! <>])} \\
-                & \mathrm{Comment} && \boxed{\coloneqq \mathrm{StartSequence \; LegalChar^* \; EndSequence}}
+                & \mathrm{AllExceptDash} &&\coloneqq \mathrm{([a-z0-9 \backslash s \backslash r \backslash n ! <>])} \tag{the "-" in between a and z, 0 and 9 are range operators not a literal dash} \\\\
+                & \mathrm{AllExceptDash\&GreaterThan} &&\coloneqq \mathrm{([a-z0-9 \backslash s \backslash r \backslash n ! <])}\tag{the "-" in between a and z, 0 and 9 are range operators not a literal dash} \\\\
+                & \mathrm{Content} &&\coloneqq \mathrm{AllExceptDash^*(-AllExceptDash\&GreaterThan \; AllExceptDash^*)^*}  \tag{the "-" in front of AllExceptDash\&GreaterThan is a literal dash} \\\\
+                & \mathrm{Comment} && \boxed{\coloneqq \mathrm{StartSequence \; Content \; EndSequence}}
             \end{align*}
-            note: $\mathrm{\backslash s }$ represents a single space character
+
+            note: $\mathrm{\backslash s }$ represents a single space character, $\mathrm{\backslash r}$ represents a carriage return, $\mathrm{\backslash n}$ represents a newline character.
         \end{answer}
     \end{part}
 
