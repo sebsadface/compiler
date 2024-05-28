@@ -1,0 +1,354 @@
+%%%%%%%%%%%%%%%%%%%%% PACKAGE IMPORTS %%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsfonts, amsthm, amssymb}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{fullpage}       
+\usepackage{changepage}
+\usepackage{hyperref}
+\usepackage{blindtext}
+\usepackage{mathtools}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\urlstyle{same}
+
+\newenvironment{level}%
+{\addtolength{\itemindent}{2em}}%
+{\addtolength{\itemindent}{-2em}}
+
+\usepackage{amsmath,amsthm,amssymb}
+
+
+\usepackage[x11names, rgb]{xcolor}
+\usepackage{graphicx}
+\usepackage[nooldvoltagedirection]{circuitikz}
+\usetikzlibrary{decorations,arrows,shapes}
+
+\usepackage{datetime}
+\usepackage{etoolbox}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{array}
+\usepackage{varwidth}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage[linguistics]{forest}
+\usepackage{listings}
+\usepackage{xcolor}
+\renewcommand{\rmdefault}{cmss}
+
+
+\newcommand\doubleplus{+\kern-1.3ex+\kern0.8ex}
+\newcommand\mdoubleplus{\ensuremath{\mathbin{+\mkern-10mu+}}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+\lstdefinestyle{mystyle}{
+    language=JavaScript,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+
+\providetoggle{questionnumbers}
+\settoggle{questionnumbers}{true}
+\newcommand{\noquestionnumbers}{
+    \settoggle{questionnumbers}{false}
+}
+
+\newcounter{questionCounter}
+\newenvironment{question}[2][\arabic{questionCounter}]{%
+    \ifnum\value{questionCounter}=0 \else {\newpage}\fi%
+    \setcounter{partCounter}{0}%
+    \vspace{.25in} \hrule \vspace{0.5em}%
+    \noindent{\bf \iftoggle{questionnumbers}{Question #1: }{}#2}%
+    \addtocounter{questionCounter}{1}%
+    \vspace{0.8em} \hrule \vspace{.10in}%
+}
+
+\newcounter{partCounter}[questionCounter]
+\renewenvironment{part}[1][\alph{partCounter}]{%
+    \addtocounter{partCounter}{1}%
+    \vspace{.10in}%
+    \begin{indented}%
+       {\bf (#1)} %
+}{\end{indented}}
+
+\def\indented#1{\list{}{}\item[]}
+\let\indented=\endlist
+\def\show#1{\ifdefempty{#1}{}{#1\\}}
+\def\IMP{\rightarrow}
+\def\AND{\wedge}
+\def\OR{\vee}
+\def\BI{\leftrightarrow}
+\def\DIFF{\setminus}
+\def\SUB{\subseteq}
+
+
+\newcolumntype{C}{>{\centering\arraybackslash}m{1.5cm}}
+\renewcommand\qedsymbol{$\blacksquare$}
+\newtcolorbox{answer}
+{
+  colback   = green!5!white,    % Background color
+  colframe  = green!75!black,   % Outline color
+  box align = center,           % Align box on text line
+  varwidth upper,               % Enables multi line input
+  hbox                          % Bounds box to text width
+}
+
+\newcommand{\myhwname}{Homework 1}
+\newcommand{\myname}{Sebastian Liu}
+\newcommand{\myemail}{ll57@cs.washington.edu}
+\newcommand{\mysection}{AB}
+\newcommand{\dollararrow}{\stackrel{\$}{\leftarrow}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% Document Options %%%%%%%%%%%%%%%%%%%%%%
+\noquestionnumbers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%% WORK BELOW %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{center}
+    \textbf{Homework 2 - CFGs and LR Parsing} \bigskip
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%% Task 1 %%%%%%%%%%%%%%%%%%%%%%%%M
+\begin{question}{Question 1} 
+    \begin{part}
+        \begin{answer}
+            $$ \textbf{Derivation 1:  }S \rightarrow aSbS 
+                \rightarrow abS
+                \rightarrow abaSbS
+                \rightarrow ababS
+                \rightarrow abab$$
+
+            $$ \textbf{Derivation 2:  }S \rightarrow aSbS 
+            \rightarrow abSaSbS
+            \rightarrow abaSbS
+            \rightarrow ababS
+            \rightarrow abab
+            $$
+        \end{answer}
+    \end{part}
+
+    \begin{part}
+        \begin{answer}
+            $$ \textbf{Derivation 1:  }S \rightarrow aSbS 
+            \rightarrow aSbaSbS
+            \rightarrow aSbaSb
+            \rightarrow aSbab
+            \rightarrow abab
+            $$
+
+            $$ \textbf{Derivation 2:  }S \rightarrow aSbS 
+            \rightarrow aSb
+            \rightarrow abSaSb
+            \rightarrow abSab
+            \rightarrow abab
+            $$
+        \end{answer}
+    \end{part}
+
+    \begin{part}
+        \begin{answer}
+            \textbf{Note:} parse tree for derivation 1 in both leftmost and rightmost are the same (shown on the left), and  the parse tree for derivation 2 in both leftmost and rightmost are the same (shown on the right). \\
+            \textbf{Parse tree for Derivation 1s}: \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; \textbf{Parse tree for Derivation 2s}: \\
+            \includegraphics*[width=0.56\linewidth]{1deriv1.png}
+            \includegraphics*[width=0.46\linewidth]{1deriv2.png}
+        \end{answer}
+    \end{part}
+\end{question}
+
+%%%%%%%%%%%%%%%%%%%%%%%% Task 2 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{question}{Question 2}
+    \begin{part}
+        \begin{answer}
+            \textbf{Left-most derivation:}
+            \begin{align*}
+                S \rightarrow (L) 
+            \rightarrow (L,S)
+            \rightarrow (S, S)
+            \rightarrow (x, S)
+            \rightarrow (x, (L))
+            \rightarrow (x, (L,S))
+            \rightarrow (x, (S, S))
+            &\rightarrow (x, (x, S))\\
+            &\rightarrow (x, (x, x))
+            \end{align*}
+        \end{answer}
+    \end{part}
+
+    \begin{part}
+        \begin{answer}
+            \textbf{Right-most derivation:}
+            \begin{align*}
+                S \rightarrow (L) 
+            \rightarrow (L,S)
+            \rightarrow (L,(L))
+            \rightarrow (L,(L,S))
+            \rightarrow (L,(L,x))
+            \rightarrow (L,(S,x))
+            &\rightarrow (L,(x,x))\\
+            &\rightarrow (S,(x,x))\\
+            &\rightarrow (x,(x,x))
+            \end{align*}
+        \end{answer}
+    \end{part}
+
+    \begin{part}
+        \begin{answer}
+            \begin{tabular}[h]{lll}
+                \textbf{Stack} & \textbf{Input} & \textbf{Action} \\
+                \hline
+                \$     & $(x,x,x)$ \$ & shift  \\
+                \$$($    &  $x,x,x)$ \$ & shift  \\
+                \$$(x$   &  $,x,x)$  \$ & reduce \\
+                \$$(S$   &   $,x,x)$ \$ & reduce \\
+                \$$(L$   &  $,x,x)$  \$ & shift  \\
+                \$$(L,$  &   $x,x)$  \$ & shift  \\
+                \$$(L,x$ &   $,x)$   \$ & reduce \\
+                \$$(L,S$ &   $,x)$   \$ & reduce \\
+                \$$(L$  &    $,x) $  \$ & shift  \\
+                \$$(L,$  &   $ x) $  \$ & shift  \\
+                \$$(L,x$ &   $ )  $  \$ & reduce \\
+                \$$(L,S$ &   $ ) $   \$ & reduce \\
+                \$$(L$   &    $)$    \$ & shift  \\
+                \$$(L)$  &         \$ & reduce \\
+                \$$S$ &            \$ & accept \\
+            \end{tabular}
+        \end{answer}
+    \end{part}
+\newpage
+    \begin{part}
+        \begin{answer}
+            \begin{tabular}[h]{lll}
+                \textbf{Stack} & \textbf{Input} & \textbf{Action} \\
+                \hline
+                \$       & $(x,x,x)$ \$ & shift  \\
+                \$$(    $  &  $x,x,x)$ \$ & shift  \\
+                \$$(x     $&  $,x,x)$  \$ & reduce \\
+                \$$(S     $&   $,x,x)$ \$ & shift \\
+                \$$(S,    $&    $x,x)$ \$ & shift \\
+                \$$(S,x  $ &     $,x)$ \$ & reduce \\
+                \$$(S,S  $ &     $,x)$ \$ & shift \\
+                \$$(S,S, $ &     $ x)$ \$ & shift \\
+                \$$(S,S,x $&      $ )$ \$ & reduce \\
+                \$$(S,S,S $&       $)$ \$ & reduce \\
+                \$$(S,S,L$ &       $)$ \$ & reduce \\
+                \$$(S,L$   &       $)$ \$ & reduce \\
+                \$$(L$     &       $)$ \$ & shift \\
+                \$$(L)$    &        \$ & reduce \\
+                \$ $S $    &        \$ & accept \\
+            \end{tabular}\\\\
+            The depth of the stack during self-reduce parse \textbf{increases} if we replace the left-recursive production $L\Coloneq L,S$ (max depth: 4) with right-recursive production $L \Coloneq S,L$ (max depth: 6).
+        \end{answer}
+    \end{part}
+\end{question}
+
+%%%%%%%%%%%%%%%%%%%%%%%% Task 3 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{question}{Question 3}
+    \begin{part}
+        \begin{answer}
+            \textbf{Non-terminals:} $S$ (sentence), $NP$ (noun phrase), $VP$ (verb phrase), $PP$ (prepositional phrase), $N$ (noun), $V$ (verb), $Art$ (article), $P$ (preposition) \\\\
+            \textbf{Grammar Rules:} \\
+            $S \Coloneq S ; S \mid NP\;\; VP$ \\
+            $NP \Coloneq Art \;\; N \mid N \;\; N \mid N$ \\
+            $VP \Coloneq V \;\; NP \mid V \;\; PP$ \\
+            $PP \Coloneq P \;\; NP$ \\
+            $N \Coloneq \mathrm{time} \mid \mathrm{arrow} \mid \mathrm{banana} \mid \mathrm{fruit} \mid \mathrm{flies} $\\
+            $V \Coloneq \mathrm{flies} \mid \mathrm{like}$ \\
+            $Art \Coloneq \mathrm{a} \mid \mathrm{an} \mid \mathrm{the}$ \\
+            $P \Coloneq \mathrm{like}$ \\\\
+            \textbf{Parse tree \#1}: \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\; \textbf{Parse tree \# 2}: \\
+            \includegraphics*[width=0.51\linewidth]{3.png}
+            \includegraphics*[width=0.51\linewidth]{3_2.png}
+        \end{answer}
+    \end{part}
+\end{question}
+
+%%%%%%%%%%%%%%%%%%%%%%%% Task 4 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{question}{Question 4}
+    \begin{part}
+        \begin{answer}
+            We add a production $E’$ with the epithets symbol $E$ followed by end of file (\$), so we have grammar rule:\\
+            $\textbf{0.  } E’ \Coloneq E\;\$ $ \\
+            $\textbf{1.  } E \Coloneq D $\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;$\textbf{5.  } T \Coloneq \textrm{quick} $\\
+            $\textbf{2.  } D \Coloneq T $\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;$\textbf{6.  } T \Coloneq \textrm{strong}$\\
+            $\textbf{3.  } D \Coloneq S $\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;$\textbf{7.  } A \Coloneq \textrm {bunny}$\\
+            $\textbf{4.  } S \Coloneq T \textrm{ like } A $\;\;\;\;\;\;$\textbf{8.  } A \Coloneq \textrm{ox}$\\\\
+            We have the following LR(0) state diagram:\\
+            \includegraphics*[width=0.8\linewidth]{4a.png} \\
+            and parse table:\\
+            \includegraphics*[width=\linewidth]{4ab.png} 
+        \end{answer}
+    \end{part}
+\newpage
+    \begin{part}
+        \begin{answer}
+            \textbf{FIRST, FOLLOW, nullable for each non-terminal:} \\
+            \includegraphics*[width=\linewidth]{4b.png} 
+        \end{answer}
+    \end{part}
+
+    \begin{part}
+        \begin{answer}
+            \textbf{SLR parse table:} \\
+            \includegraphics*[width=\linewidth]{4c.png} 
+        \end{answer}
+    \end{part}
+
+    \begin{part}
+        \begin{answer}
+            This grammar is not LR(0) because it has shift-reduce conflicts in state 3 without lookaheads (as shown in the LR(0) parse table).
+            This shift-reduce conflict in state 3 is resolved in the SLR parse table by using the FOLLOW sets to determine when a reduction should occur (as shown in the SLR parse table).
+            Therefore, this grammar is \textbf{SLR}.
+        \end{answer}
+    \end{part}
+\end{question}
+\end{document}
